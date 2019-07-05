@@ -1,0 +1,10 @@
+version: '3.3'
+services:
+  tax_calculator-db:
+    image: postgres:10.4
+    ports:
+    - "5432:5432"
+    environment:
+    - POSTGRES_DB=tax_calculator
+    - POSTGRES_USER=tax_calculator_user
+    - POSTGRES_PASSWORD=tax_calculator_password
