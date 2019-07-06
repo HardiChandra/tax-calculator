@@ -1,0 +1,21 @@
+spring:
+  profiles:
+    active: development
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    url: ${ENV_DATASOURCE_URL}
+    username: ${ENV_DATASOURCE_SERVICE_USERNAME}
+    password: ${ENV_DATASOURCE_SERVICE_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+    platform: postgres
+  jpa:
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+
+ENV_DATASOURCE_URL: jdbc:postgresql://localhost:5432/tax_calculator
+ENV_DATASOURCE_SERVICE_USERNAME: tax_calculator_user
+ENV_DATASOURCE_SERVICE_PASSWORD: tax_calculator_password
