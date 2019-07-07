@@ -7,12 +7,14 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @RestController
 @RequestMapping(value = "/v1/transaction")
@@ -28,8 +30,8 @@ public class TransactionController {
 		return new ResponseEntity<>(transactions, HttpStatus.NOT_IMPLEMENTED);
 	}
 
-	@RequestMapping(method = GET)
-	public ResponseEntity<Transaction> createTransaction(CreateTransactionCommand createTransactionCommand) {
+	@RequestMapping(method = POST)
+	public ResponseEntity<Transaction> createTransaction(@RequestBody CreateTransactionCommand createTransactionCommand) {
 		Transaction transaction = transactionService.createTransaction(createTransactionCommand);
 		return new ResponseEntity<>(transaction, HttpStatus.NOT_IMPLEMENTED);
 	}
