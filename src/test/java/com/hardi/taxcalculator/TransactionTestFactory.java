@@ -32,9 +32,13 @@ public class TransactionTestFactory {
 	public static List<TransactionResponse> multipleTransactionResponses(Integer count) {
 		List<TransactionResponse> transactionResponses = new ArrayList<>();
 		for (Integer i=1 ; i <= count ; i++) {
-			transactionResponses.add(TransactionResponse.builder().name("test" + i).taxCode(i).price(new BigDecimal(i * 1000)).build());
+			transactionResponses.add(aTransactionResponse(i));
 		}
 		return transactionResponses;
+	}
+	
+	public static TransactionResponse aTransactionResponse(Integer number) {
+		return TransactionResponse.builder().name("test" + number).taxCode(number).price(new BigDecimal(number * 1000)).build();
 	}
 	
 	public static CreateTransactionCommand aCreateTransactionCommand() {

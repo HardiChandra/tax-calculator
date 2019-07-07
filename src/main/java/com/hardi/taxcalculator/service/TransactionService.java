@@ -29,9 +29,10 @@ public class TransactionService {
 				.collect(Collectors.toList());
 	}
 	
-	public Transaction createTransaction(CreateTransactionCommand createTransactionCommand) {
+	public TransactionResponse createTransaction(CreateTransactionCommand createTransactionCommand) {
 		Transaction transaction = createNewTransaction(createTransactionCommand);
-		return transactionRepository.save(transaction);
+		Transaction transactionAfterSave = transactionRepository.save(transaction);
+		return taxCodeConverterRegistry.convert(transactionAfterSave);
 	}
 
 	Transaction createNewTransaction(CreateTransactionCommand createTransactionCommand) {

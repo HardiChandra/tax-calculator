@@ -16,6 +16,28 @@ spring:
           lob:
             non_contextual_creation: true
 
+---
+spring:
+  profiles:
+    active: test
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    url: jdbc:h2:mem:testdb
+    username: ${ENV_DATASOURCE_SERVICE_USERNAME}
+    password: ${ENV_DATASOURCE_SERVICE_PASSWORD}
+    driver-class-name: org.h2.Driver
+  jpa:
+    properties:
+      hibernate:
+        jdbc:
+          dialect: org.hibernate.dialect.H2Dialect
+          lob:
+            non_contextual_creation: true
+  h2:
+    console:
+      enabled: true
+
 server:
   port: 8080
 

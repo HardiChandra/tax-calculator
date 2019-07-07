@@ -3,7 +3,6 @@ package com.hardi.taxcalculator.controller;
 import com.hardi.taxcalculator.TransactionTestFactory;
 import com.hardi.taxcalculator.api.command.CreateTransactionCommand;
 import com.hardi.taxcalculator.api.response.TransactionResponse;
-import com.hardi.taxcalculator.domain.Transaction;
 import com.hardi.taxcalculator.service.TransactionService;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -27,12 +26,12 @@ public class TransactionControllerTest {
 
 	@Test
 	public void testCreateTransaction() {
-		Transaction transactionMock = TransactionTestFactory.aTransaction();
+		TransactionResponse transactionResponseMock = TransactionTestFactory.aTransactionResponse(1);
 		CreateTransactionCommand createTransactionCommand = TransactionTestFactory.aCreateTransactionCommand();
-		Mockito.when(transactionService.createTransaction(createTransactionCommand)).thenReturn(transactionMock);
+		Mockito.when(transactionService.createTransaction(createTransactionCommand)).thenReturn(transactionResponseMock);
 
-		ResponseEntity<Transaction> transactionsResponse = transactionController.createTransaction(createTransactionCommand);
+		ResponseEntity<TransactionResponse> transactionsResponse = transactionController.createTransaction(createTransactionCommand);
 		Mockito.verify(transactionService, Mockito.times(1)).createTransaction(createTransactionCommand);
-		assert transactionsResponse.getBody() == transactionMock;
+		assert transactionsResponse.getBody() == transactionResponseMock;
 	}
 }

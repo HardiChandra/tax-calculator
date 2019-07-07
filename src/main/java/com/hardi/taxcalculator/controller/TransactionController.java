@@ -32,8 +32,8 @@ public class TransactionController {
 	}
 
 	@RequestMapping(method = POST)
-	public ResponseEntity<Transaction> createTransaction(@RequestBody CreateTransactionCommand createTransactionCommand) {
-		Transaction transaction = transactionService.createTransaction(createTransactionCommand);
-		return new ResponseEntity<>(transaction, HttpStatus.CREATED);
+	public ResponseEntity<TransactionResponse> createTransaction(@RequestBody CreateTransactionCommand createTransactionCommand) {
+		TransactionResponse transactionResponse = transactionService.createTransaction(createTransactionCommand);
+		return new ResponseEntity<>(transactionResponse, HttpStatus.CREATED);
 	}
 }
