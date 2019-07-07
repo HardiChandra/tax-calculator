@@ -16,6 +16,9 @@ spring:
           lob:
             non_contextual_creation: true
 
+server:
+  port: 8080
+
 ENV_DATASOURCE_URL: jdbc:postgresql://localhost:5432/tax_calculator
 ENV_DATASOURCE_SERVICE_USERNAME: tax_calculator_user
 ENV_DATASOURCE_SERVICE_PASSWORD: tax_calculator_password
