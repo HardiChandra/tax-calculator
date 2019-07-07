@@ -1,5 +1,7 @@
 package com.hardi.taxcalculator;
 
+import com.hardi.taxcalculator.api.command.CreateTransactionCommand;
+import com.hardi.taxcalculator.api.response.TransactionResponse;
 import com.hardi.taxcalculator.domain.Transaction;
 
 import java.math.BigDecimal;
@@ -25,5 +27,17 @@ public class TransactionTestFactory {
 			transactions.add(Transaction.builder().id(i.longValue()).name("test" + i).taxCode(i).price(new BigDecimal(i * 1000)).build());
 		}
 		return transactions;
+	}
+
+	public static List<TransactionResponse> multipleTransactionResponses(Integer count) {
+		List<TransactionResponse> transactionResponses = new ArrayList<>();
+		for (Integer i=1 ; i <= count ; i++) {
+			transactionResponses.add(TransactionResponse.builder().name("test" + i).taxCode(i).price(new BigDecimal(i * 1000)).build());
+		}
+		return transactionResponses;
+	}
+	
+	public static CreateTransactionCommand aCreateTransactionCommand() {
+		return CreateTransactionCommand.builder().name("test1").taxCode(1).price(new BigDecimal(1000)).build();
 	}
 }

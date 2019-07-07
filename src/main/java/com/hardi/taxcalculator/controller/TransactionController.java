@@ -1,6 +1,7 @@
 package com.hardi.taxcalculator.controller;
 
 import com.hardi.taxcalculator.api.command.CreateTransactionCommand;
+import com.hardi.taxcalculator.api.response.TransactionResponse;
 import com.hardi.taxcalculator.domain.Transaction;
 import com.hardi.taxcalculator.service.TransactionService;
 import lombok.AllArgsConstructor;
@@ -25,14 +26,14 @@ public class TransactionController {
 	private TransactionService transactionService;
 
 	@RequestMapping(method = GET)
-	public ResponseEntity<List<Transaction>> getTransactions() {
-		List<Transaction> transactions = transactionService.getTransactions();
-		return new ResponseEntity<>(transactions, HttpStatus.OK);
+	public ResponseEntity<List<TransactionResponse>> getTransactions() {
+		List<TransactionResponse> transactionResponses = transactionService.getTransactions();
+		return new ResponseEntity<>(transactionResponses, HttpStatus.OK);
 	}
 
 	@RequestMapping(method = POST)
 	public ResponseEntity<Transaction> createTransaction(@RequestBody CreateTransactionCommand createTransactionCommand) {
 		Transaction transaction = transactionService.createTransaction(createTransactionCommand);
-		return new ResponseEntity<>(transaction, HttpStatus.OK);
+		return new ResponseEntity<>(transaction, HttpStatus.CREATED);
 	}
 }
