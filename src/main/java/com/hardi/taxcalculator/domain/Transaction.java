@@ -1,6 +1,7 @@
 package com.hardi.taxcalculator.domain;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -12,6 +13,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @Data
 @EqualsAndHashCode
+@Builder
 public class Transaction {
 	@Id
 	private Long id;
