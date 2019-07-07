@@ -1,6 +1,6 @@
 package com.hardi.taxcalculator.controller;
 
-import com.hardi.taxcalculator.command.CreateTransactionCommand;
+import com.hardi.taxcalculator.api.command.CreateTransactionCommand;
 import com.hardi.taxcalculator.domain.Transaction;
 import com.hardi.taxcalculator.service.TransactionService;
 import lombok.AllArgsConstructor;

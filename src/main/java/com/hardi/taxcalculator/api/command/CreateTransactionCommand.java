@@ -1,4 +1,4 @@
-package com.hardi.taxcalculator.command;
+package com.hardi.taxcalculator.api.command;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

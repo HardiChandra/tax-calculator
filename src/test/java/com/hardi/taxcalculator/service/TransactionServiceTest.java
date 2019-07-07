@@ -1,6 +1,6 @@
 package com.hardi.taxcalculator.service;
 
-import com.hardi.taxcalculator.command.CreateTransactionCommand;
+import com.hardi.taxcalculator.api.command.CreateTransactionCommand;
 import com.hardi.taxcalculator.domain.Transaction;
 import com.hardi.taxcalculator.repository.TransactionRepository;
 import org.junit.Test;
