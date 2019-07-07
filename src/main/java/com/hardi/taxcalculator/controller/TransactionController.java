@@ -27,12 +27,12 @@ public class TransactionController {
 	@RequestMapping(method = GET)
 	public ResponseEntity<List<Transaction>> getTransactions() {
 		List<Transaction> transactions = transactionService.getTransactions();
-		return new ResponseEntity<>(transactions, HttpStatus.NOT_IMPLEMENTED);
+		return new ResponseEntity<>(transactions, HttpStatus.OK);
 	}
 
 	@RequestMapping(method = POST)
 	public ResponseEntity<Transaction> createTransaction(@RequestBody CreateTransactionCommand createTransactionCommand) {
 		Transaction transaction = transactionService.createTransaction(createTransactionCommand);
-		return new ResponseEntity<>(transaction, HttpStatus.NOT_IMPLEMENTED);
+		return new ResponseEntity<>(transaction, HttpStatus.OK);
 	}
 }
