@@ -1,5 +1,6 @@
 package com.hardi.taxcalculator.controller;
 
+import com.hardi.taxcalculator.TransactionTestFactory;
 import com.hardi.taxcalculator.api.command.CreateTransactionCommand;
 import com.hardi.taxcalculator.domain.Transaction;
 import com.hardi.taxcalculator.service.TransactionService;
@@ -17,7 +18,7 @@ public class TransactionControllerTest {
 	
 	@Test
 	public void testGetTransactions() {
-		List<Transaction> transactionsMock = buildTransactionsMock();
+		List<Transaction> transactionsMock = TransactionTestFactory.multipleTransactions(3);
 		Mockito.when(transactionService.getTransactions()).thenReturn(transactionsMock);
 		
 		ResponseEntity<List<Transaction>> transactionsResponse = transactionController.getTransactions();
@@ -27,7 +28,7 @@ public class TransactionControllerTest {
 
 	@Test
 	public void testCreateTransaction() {
-		Transaction transactionMock = buildTransactionMock();
+		Transaction transactionMock = TransactionTestFactory.aTransaction();
 		CreateTransactionCommand createTransactionCommand = buildCreateTransactionCommandMock();
 		Mockito.when(transactionService.createTransaction(createTransactionCommand)).thenReturn(transactionMock);
 
@@ -38,16 +39,5 @@ public class TransactionControllerTest {
 
 	private CreateTransactionCommand buildCreateTransactionCommandMock() {
 		return CreateTransactionCommand.builder().name("test1").taxCode(1).price(new BigDecimal(1000)).build();
-	}
-
-	private Transaction buildTransactionMock() {
-		return Transaction.builder().id(1L).name("test1").taxCode(1).price(new BigDecimal(1000)).build();
-	}
-
-	private List<Transaction> buildTransactionsMock() {
-		List<Transaction> transactionsMock = new ArrayList<>();
-		transactionsMock.add(Transaction.builder().id(1L).name("test1").taxCode(1).price(new BigDecimal(1000)).build());
-		transactionsMock.add(Transaction.builder().id(2L).name("test2").taxCode(2).price(new BigDecimal(2000)).build());
-		return transactionsMock;
 	}
 }
