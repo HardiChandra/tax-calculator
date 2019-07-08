@@ -25,3 +25,10 @@ You can run all tests by using :
 ```
 ./gradlew test
 ```
+
+## Database
+
+We are using postgres that is running on docker container. Detailed credentials can be found at `src/main/resources/config/application.yml`
+
+We only have 1 table which is a `transaction` table, since it's the only table that is necessary for the requirement.
+
