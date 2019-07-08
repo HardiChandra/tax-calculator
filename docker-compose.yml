@@ -8,3 +8,11 @@ services:
     - POSTGRES_DB=tax_calculator
     - POSTGRES_USER=tax_calculator_user
     - POSTGRES_PASSWORD=tax_calculator_password
+  tax-calculator:
+    ports:
+      - "8080:8080"
+    depends_on:
+      - tax_calculator-db
+    build:
+      context: .
+      dockerfile: Dockerfile
