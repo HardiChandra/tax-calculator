@@ -26,7 +26,7 @@ public class TaxCodeConverterRegistry {
 	}
 	
 	public class TaxCodeConverterNotFoundException extends RuntimeException {
-		public TaxCodeConverterNotFoundException() {
+		TaxCodeConverterNotFoundException() {
 			super("Tax Code Converter not found");
 		}
 	}

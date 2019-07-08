@@ -46,4 +46,14 @@ public class TransactionServiceTest {
 		assert captor.getValue().getTaxCode().equals(taxCode);
 		assert captor.getValue().getPrice().equals(price);
 	}
+	
+	@Test(expected = TransactionService.TaxCodeNotSupportedException.class)
+	public void testTaxCodeNotSupportedException() {
+		CreateTransactionCommand createTransactionCommand = CreateTransactionCommand.builder()
+				.name("test")
+				.taxCode(0)
+				.price(new BigDecimal(1000))
+				.build();
+		transactionService.createTransaction(createTransactionCommand);
+	}
 }
