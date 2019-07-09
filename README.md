@@ -15,9 +15,19 @@ We are using swagger to document API, to access swagger UI go to this [URL](http
 Right now we only have 2 endpoints :
 ```
 GET /v1/transaction
+
+URL example : http://localhost:8080/v1/transaction 
 ```
 ```
 POST /v1/transaction
+
+URL example : http://localhost:8080/v1/transaction
+Body content example : 
+{
+  "name": "Big Mac",
+  "price": 1000,
+  "taxCode": 1
+}
 ```
 
 ## Running Tests
