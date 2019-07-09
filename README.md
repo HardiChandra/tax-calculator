@@ -16,7 +16,9 @@ Right now we only have 2 endpoints :
 ```
 GET /v1/transaction
 
-URL example : http://localhost:8080/v1/transaction 
+URL example : http://localhost:8080/v1/transaction
+
+Using terminal : curl -X GET "http://localhost:8080/v1/transaction" -H "accept: */*" 
 ```
 ```
 POST /v1/transaction
@@ -28,6 +30,8 @@ Body content example :
   "price": 1000,
   "taxCode": 1
 }
+
+Using terminal : curl -X POST "http://localhost:8080/v1/transaction" -H "accept: */*" -H "Content-Type: application/json" -d "{ \"name\": \"Big Mac\", \"price\": 1000, \"taxCode\": 1}"
 ```
 
 ## Running Tests
@@ -40,5 +44,5 @@ You can run all tests by using :
 
 We are using postgres that is running on docker container. Detailed credentials can be found at `src/main/resources/config/application.yml`
 
-We only have 1 table which is a `transaction` table, since it's the only table that is necessary for the requirement.
+We only have 1 table which is a `transaction` table, since it's the only table that is necessary for the requirement, and we don't want to over engineer this.
 
